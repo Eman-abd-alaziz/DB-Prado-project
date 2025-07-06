@@ -1,8 +1,7 @@
 # 🌟 Prado Company
 
 > “Organizing complexity into elegant systems — one exhibition at a time.”
-
-<img src="home.jpeg" alt="banner" width="400"/>
+![Prado Company Logo](home.jpeg)
 ---
 
 ## 🏢 Company Overview
