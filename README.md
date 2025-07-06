@@ -2,7 +2,7 @@
 
 > “Organizing complexity into elegant systems — one exhibition at a time.”
 
-<img src="home.png" alt="banner" width="400"/>
+<img src="home.jpeg" alt="banner" width="400"/>
 ---
 
 ## 🏢 Company Overview
