@@ -1,4 +1,4 @@
-# 🌟 Prado Company - Data Architecture Blueprint
+# 🌟 Prado Company
 
 > “Organizing complexity into elegant systems — one exhibition at a time.”
 
@@ -106,9 +106,4 @@ This data structure can fuel the development of:
 
 With this design, **Prado Company** is equipped to scale, adapt, and serve.
 
----
-
-📁 **Filename:** `README.md`  
-🕓 **Last Updated:** July 2025  
-🔒 **Confidential — Internal Use Only**
 
