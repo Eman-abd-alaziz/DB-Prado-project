@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8465d578-66eb-4742-8f3d-7dcf0f00b094">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cHJhZG9fY29tcGFueS5lbXBsb3llZSBBUyAsMzI0LDIwLGEwMWU3MDc1LTlmMGYtNGFjNy04NDli
+LTVlOGYwN2YzZGZlODtwcmFkb19jb21wYW55LmVtcGxveWVlX3N0b3JlIEFTICwxNjgsMTI3LGY0
+OTZmYzQyLWI3YjUtNDkxNS1iZTRiLTk3MWZmYmIxYjMxYztwcmFkb19jb21wYW55LnN0b3JlIEFT
+ICwyMCw4MixlMmIyMTEyZS00Nzg3LTRjNTYtOGRkOC04ZDFhMjc4YzNlOGE7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT SUM( prado_company.employee."salary" )  AS TOTAL_SALARY,
+	count( prado_company.employee."SSN" )  AS TOTAL_EMPLOYEE,
+	prado_company.store.name_s
+FROM prado_company.employee_store
+	INNER JOIN prado_company.employee ON 
+	 prado_company.employee."SSN" = prado_company.employee_store."ESSN" 
+	INNER JOIN prado_company.store ON 
+	 prado_company.store.number_s = prado_company.employee_store.number_ss 
+GROUP BY prado_company.store.name_s]]>
+	</queryString>
+	<field name="total_salary" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_salary"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_salary"/>
+	</field>
+	<field name="total_employee" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_employee"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_employee"/>
+	</field>
+	<field name="name_s" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_s"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_s"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="store"/>
+	</field>
+	<group name="name_s">
+		<groupExpression><![CDATA[$F{name_s}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

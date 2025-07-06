@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pradoo" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c368610e-5bee-4e75-8f1e-ecda64380534">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="451"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cHJhZG9fY29tcGFueS5lbXBsb3llZSBBUyAsMTcxLDE1LGNmODM4ZWQyLTRhNjAtNGRjYS1iYmM3
+LTdkMGFmZGM3ZmZkYjtwcmFkb19jb21wYW55LnN0b3JlIEFTICwyOTgsNzcsZGY1ZWQzMjAtNmVl
+My00NDgzLTk2NWYtNGMxNjhiZWM1MTM0O3ByYWRvX2NvbXBhbnkuZW1wbG95ZWVfc3RvcmUgQVMg
+LDE1LDEyMixkNWFmNjM4Ny05ZjAyLTRlM2ItYjI5ZS1iMmIyMjkyOTExNGQ7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="21b70311-b650-4678-a39c-887917366bf0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT count(prado_company.employee."SSN" )  AS Total_number_of_employee,
+	sum(prado_company.employee."salary")  AS Total_salary,
+	prado_company.store.name_s
+FROM prado_company.employee_store
+	INNER JOIN prado_company.store ON 
+	 prado_company.store.number_s = prado_company.employee_store.number_ss 
+	INNER JOIN prado_company.employee ON 
+	 prado_company.employee."SSN" = prado_company.employee_store."ESSN" 
+GROUP BY prado_company.store.name_s]]>
+	</queryString>
+	<field name="total_number_of_employee" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_number_of_employee"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_number_of_employee"/>
+	</field>
+	<field name="total_salary" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_salary"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_salary"/>
+	</field>
+	<field name="name_s" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_s"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_s"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="store"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{name_s}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<frame>
+					<reportElement mode="Opaque" x="151" y="7" width="573" height="24" forecolor="#B89F7D" backcolor="#CCA989" uuid="f4dcb66c-b415-4c03-b80f-d37cc7d7e4f1"/>
+					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="0" y="1" width="263" height="23" forecolor="#FFFFFF" uuid="28a206df-70e0-4131-ac68-390d711bd9c4"/>
+						<textElement>
+							<font fontName="Arial" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{name_s}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="9"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="555" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="4" y="14" width="800" height="16" forecolor="#D0B48E" backcolor="#E3C88F" uuid="6f4fe8ef-88ca-4d5d-b46a-054826bb7893"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="5" y="70" width="179" height="29" uuid="0dae0af3-dd1d-4b42-b346-386af21f0689"/>
+				<textElement textAlignment="Right">
+					<font size="24" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Welcome to Prado]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#B39E86" uuid="83f5e806-cc04-4161-87a9-07633f604bc1"/>
+				<staticText>
+					<reportElement style="Title" x="100" y="0" width="578" height="65" uuid="f5cd9ee0-5caa-4e48-8946-c7e84d82a845"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PRADO FURNITURE]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="2a3d298d-90eb-4db1-919a-c9b2ed28c222"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="-70" y="-10" width="287" height="24" forecolor="#000000" uuid="0e5f250f-b164-4576-9794-02f9c0f00715">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa7cdf1d-de56-42bc-98e8-93c77cfd8e33"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[total_number_of_employee]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="217" y="-10" width="287" height="24" forecolor="#000000" uuid="2b6df486-286a-4cfb-a92a-2654f8576d34">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e826e4a-abe6-4f33-a6d2-6c3f99ede752"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[total_salary]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="14" width="575" height="1" uuid="ad4e998c-7071-4467-b7fa-4441cc53d3f6"/>
+			</line>
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="822bafe9-34ee-4b4f-aa76-3eae029c4911"/>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="-70" y="2" width="287" height="25" uuid="7670cfd5-c8db-47e9-ba5a-0c6c55bfa127">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa7cdf1d-de56-42bc-98e8-93c77cfd8e33"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_number_of_employee}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="220" y="-3" width="287" height="28" uuid="5f05b7ef-6bfc-4cb5-a916-9af82d5d704b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e826e4a-abe6-4f33-a6d2-6c3f99ede752"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_salary}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c23ffbf7-1928-41f8-ade3-5930d9a4871d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
